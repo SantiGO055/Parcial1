@@ -31,9 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="input.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="input.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="negocio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="negocio.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
