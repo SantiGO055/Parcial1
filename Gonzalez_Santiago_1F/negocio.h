@@ -92,8 +92,8 @@ int sortJuego(eJuego*,int,float, char*);
 
 int firstClienteJuego(int);
 
-void modifyClie(eCliente*,int,char*,char*,char*,char*,int,int);
-void modifyJuego(eJuego*,int,char*,float,int,int);
+void modifyClie(eCliente*,int,char*,char*,char*,char*,int);
+void modifyJuego(eJuego*,int,char*,float,int);
 
 
 #endif // NEGOCIO_H_INCLUDED

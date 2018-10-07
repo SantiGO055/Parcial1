@@ -4,6 +4,6 @@ II.	Las validaciones deberán estar en una biblioteca aparte.
 III.	Tener en cuenta que no se podrá ingresar a los casos Modificar, Baja y Listar; sin antes haber realizado al menos un Alta (utilizar banderas).
 El código deberá tener comentarios con la documentación de cada una de las funciones y respetar las reglas de estilo de la cátedra.
 
-ordenamiento de juego :
+ordenamiento de juego:
 de mayor importe a menor
 descripcion de la A a la Z

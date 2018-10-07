@@ -12,6 +12,13 @@ static int getFloat(float* pBuffer){
     return scanf("%f",pBuffer);
 }
 
+/*static int utn_getChar(char* pBuffer){
+        fflush(stdin);
+        fgets(pBuffer,sizeof(pBuffer)-2,stdin);
+        pBuffer[strcspn(pBuffer, "\n")] = 0;
+        return 0;
+}*/
+
 /** \brief Obtiene un numero entero
  * \param *pEntero puntero a la variable int
  * \param *msg puntero al array char
@@ -111,10 +118,10 @@ int esLetra(char* input){
  * \return No retorna nada ya que es una funcion void
  */
 void utn_getString(char* input, char* msg) {
-    fflush(stdin);
-    printf("%s", msg);
-    fgets(input,100,stdin);
-    input[strcspn(input, "\n")] = 0;
+            fflush(stdin);
+            printf("%s", msg);
+            fgets(input,100,stdin);
+            input[strcspn(input, "\n")] = 0;
 }
 /** \brief Obtiene una cadena de caracteres validando solo letras
  * \param *input puntero al array char
@@ -138,4 +145,32 @@ int utn_getStringAvanzado(char* input,char* msg,char* msgErr,int cant, int reint
         }
     }while(reintentos>=0);
     return 0;
+}
+int utn_getTelefono(char* input,char* msg,char* msgErr,int cant, int reintentos){
+    char aux[cant];
+    int i=0,retorno=-1;
+    utn_getString(aux,msg);
+    do{
+
+     //recorrer el vector y ver si hay alguna letra, dividiendo el numero por si mismo si da 1 es numero sino no lo es
+
+        if(aux[i]=='\0'){
+            retorno=0;
+            break;
+        }
+        if(isdigit(aux[i])){
+            strcpy(input,aux);
+            retorno=0;
+            i++;
+        }
+
+        else{
+            printf("%s",msgErr);
+            reintentos--;
+            retorno=-1;
+            utn_getString(aux,msg);
+        }
+
+    }while(reintentos>=0);
+    return retorno;
 }

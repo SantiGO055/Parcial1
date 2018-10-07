@@ -58,3 +58,32 @@
 	"negocio.h"
 	"input.h"
 
+1538940514 source:d:\proyectos c\gonzalez_santiago_1f\input.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"input.h"
+
+1538928620 d:\proyectos c\gonzalez_santiago_1f\input.h
+
+1538948270 source:d:\proyectos c\gonzalez_santiago_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"input.h"
+	"negocio.h"
+
+1538942434 d:\proyectos c\gonzalez_santiago_1f\negocio.h
+
+1538945874 source:d:\proyectos c\gonzalez_santiago_1f\negocio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"negocio.h"
+	"input.h"
+

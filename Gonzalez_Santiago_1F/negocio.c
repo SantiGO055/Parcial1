@@ -135,7 +135,7 @@ int printJuego(eJuego* juego,int JUEGOS){
     for(i=0;i<JUEGOS;i++){
         if(juego[i].isEmpty==0){
             printf("___________________________________________________________________\n");
-            printf("\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d",juego[i].descr,juego[i].importe,juego[i].idJue);
+            printf("\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",juego[i].descr,juego[i].importe,juego[i].idJue);
             printf("___________________________________________________________________\n");
             retorno=i;
         }
@@ -198,17 +198,6 @@ int sortCliente(eCliente* clie,int CLIENTE,char* apellido, char* nombre){
 int sortJuego(eJuego* juego,int JUEGOS,float importe, char* nombre){
     eJuego jueAux;
     int i, j;
-       /* for(i=0;i<CLIENTE-1;i++){
-                for(j=i;j<CLIENTE;j++){
-                if(emp[i].isEmpty==0&&emp[j].isEmpty==0){
-                    if(emp[i].sector>emp[j].sector){
-                        empAux=emp[i];
-                        emp[i]=emp[j];
-                        emp[j]=empAux;
-                    }
-                }
-            }
-        }*/
         for(i=0;i<JUEGOS-1;i++){
             for(j=i;j<JUEGOS;j++){
                 if(juego[i].isEmpty==0&&juego[j].isEmpty==0){
@@ -235,7 +224,7 @@ int firstClienteJuego(int flag){
     if(flag!=1){
         system("cls");
         printf("___________________________________________________________________\n");
-        printf("ERROR! Debera realizar la carga de un cliente o empleado\n");
+        printf("ERROR! Debera realizar la carga de un cliente o juego\n");
         printf("___________________________________________________________________\n");
         retorno=0;
     }
@@ -245,23 +234,29 @@ int firstClienteJuego(int flag){
 
 
 void modifyClie(eCliente *clie,int CANT,char* apellido,
-                    char* nombre, char* dom,char* tel,int idClie,int opcionModifClie){
-            if(opcionModifClie==1)
-            strcpy(clie[idClie].nombre,nombre);
-            if(opcionModifClie==2)
-            strcpy(clie[idClie].apellido,apellido);
-            if(opcionModifClie==3)
-            strcpy(clie[idClie].dom,dom);
-            if(opcionModifClie==4)
-            strcpy(clie[idClie].tel,tel);
+                    char* nombre, char* dom,char* tel,int opcionModifClie){
+            int i;
+            for(i=0;i<CANT;i++){
+                if(opcionModifClie==1)
+                strcpy(clie[i].apellido,apellido);
+                if(opcionModifClie==2)
+                strcpy(clie[i].nombre,nombre);
+                if(opcionModifClie==3)
+                strcpy(clie[i].dom,dom);
+                if(opcionModifClie==4)
+                strcpy(clie[i].tel,tel);
+            }
 }
 
 void modifyJuego(eJuego *juego,int JUEGOS,char* descr,
-                  float importe,int idJuego,int opcionModifJuego){
+                  float importe,int opcionModifJuego){
+        int i;
+        for(i=0;i<JUEGOS;i++){
             if(opcionModifJuego==1)
-            strcpy(juego[idJuego].descr,descr);
+            strcpy(juego[i].descr,descr);
             if(opcionModifJuego==2)
-            juego[idJuego].importe=importe;
+            juego[i].importe=importe;
+            }
 }
 
 int removeCliente(eCliente* clie,int CLIENTE,int idRemClie){
