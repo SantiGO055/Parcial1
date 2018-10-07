@@ -74,9 +74,9 @@ int getFreeSpaceAlquiler(eAlquiler*, int);
  * \param longitud del array
  * \return retorna (-1) si hay error, 0 si esta bien
  */
-int altaCliente(eCliente*,int,char*,char*,char*,int,int);
+int altaCliente(eCliente*,int,char*,char*,char*,char*,int);
 int altaJuego(eJuego*,int,char*,float,int);
-int altaAlquiler(eAlquiler*,int,int,int,int,int,int,int)
+int altaAlquiler(eAlquiler*,int,int,int,int,int,int,int);
 
 int printCliente(eCliente*,int);
 int printJuego(eJuego*,int);

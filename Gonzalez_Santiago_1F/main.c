@@ -10,8 +10,8 @@
 #define ALQUILER (CLIENTE*JUEGOS)
 int main()
 {
-    int opcionMain,sector,flag=0,idClie=0,idJuego=0,findClienteAux,findJuegoAux,idAux,contEmp=0;
-    int opcionAlta,opcionModif,validaNum,opcionModifClie,opcionModifJuego,idRemClie,opcionRem,idRemJue;
+    int opcionMain,flag=0,idClie=0,idJuego=0,findClienteAux,findJuegoAux;
+    int opcionAlta,opcionModif,opcionModifClie,opcionModifJuego,idRemClie,opcionRem,idRemJue;
     int opcionList,idAlquiler,idClieAlq,idJuegoAlq,dia,mes,anio;
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
@@ -22,7 +22,7 @@ int main()
     float importe;
 
     do{
-        utn_getEntero(&opcionMain,"\tMenu\n1- Alta\n2- Modificar\n3- Baja\n4- Listar\n\n5- Salir\n","Opcion incorrecta, reingrese numero",1,2,2);
+        utn_getEntero(&opcionMain,"\tMenu\n1- Alta\n2- Modificar\n3- Baja\n4- Listar\n\n5- Salir\n","Opcion incorrecta, reingrese numero",1,3,2);
         switch(opcionMain){
             case 1: //opcion principal
                 utn_getEntero(&opcionAlta,"1- Clientes\n2- Juegos\n3- Alquileres","Opcion incorrecta, reingrese numero",1,3,2);
@@ -42,7 +42,7 @@ int main()
                         printf("No hay espacio para agregar clientes!\n");
                         break;
                     }
-                    utn_getStringAvanzado(apellido,"Ingrese apellido: ","ERROR! El domicilio debe ser solo letras\n",CHAR,2);
+                    utn_getStringAvanzado(apellido,"Ingrese apellido: ","ERROR! El apellido debe ser solo letras\n",CHAR,2);
                     utn_getStringAvanzado(nombre,"Ingrese nombre: ","ERROR! El nombre debe ser solo letras\n",CHAR,2);
                     utn_getStringAvanzado(dom,"Ingrese domicilio: ","ERROR! El domicilio debe ser solo letras\n",CHAR,2);
                     utn_getStringAvanzado(tel,"Ingrese telefono: ","ERROR! El telefono debe ser solo letras\n",CHAR,2);
@@ -71,12 +71,12 @@ int main()
                     system("cls");
                     printf("Accion: Juego agregado correctamente\n");
                     break;
-                }
+
                 case 3:
                     system("cls");
                     if(flag==0){
                         if(initAlquiler(alquiler,ALQUILER)==0){
-                            initJuego(alquiler,ALQUILER);
+                            initAlquiler(alquiler,ALQUILER);
                             flag=1;
                         }
                     }
@@ -101,6 +101,8 @@ int main()
 
 
                     break;
+                    }
+                break;
             case 2: //modificacion
                 system("cls");
                 utn_getEntero(&opcionModif,"¿Que desea modificar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
@@ -148,7 +150,7 @@ int main()
                         if(firstClienteJuego(flag)!=0){ //si no es la primera vez
                         printJuego(juego,JUEGOS);
                         utn_getEntero(&idJuego,"Ingrese el codigo de juego a modificar: ","ERROR! Ingrese numero entre 1 y 20\n",1,JUEGOS,2);
-                        findJuegoAux=findJuegoById(clie,JUEGOS,idJuego);
+                        findJuegoAux=findJuegoById(juego,JUEGOS,idJuego);
                         if(findJuegoAux!=-1){ //si lo encontro
                             utn_getEntero(&opcionModifJuego,"Ingrese valor que desea modificar\n1- Descripcion\n2- Importe\n",
                                           "ERROR! Ingrese numero entre 1 y 2\n",1,2,2);
@@ -211,7 +213,7 @@ int main()
                         system("cls");
                         if(firstClienteJuego(flag)!=0){
                             sortJuego(juego,JUEGOS,importe,descr);
-                            printJuego(clie,CLIENTE);
+                            printJuego(juego,CLIENTE);
                         }
                     break;
                         }

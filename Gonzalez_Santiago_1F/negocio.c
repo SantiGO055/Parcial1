@@ -104,9 +104,9 @@ int altaAlquiler(eAlquiler* alquiler,int ALQUILER, int idClieAlq,
         if(i!=-1){
 
             alquiler[i].isEmpty=0;
-            alquiler[i].idClie=idCli;
-            alquiler[i].idJue=idJue;
-            alquiler[i].idAlq=idAlq;
+            alquiler[i].idClie=idClieAlq;
+            alquiler[i].idJue=idJuegoAlq;
+            alquiler[i].idAlq=idAlquiler;
             alquiler[i].fecha.dia=dia;
             alquiler[i].fecha.mes=mes;
             alquiler[i].fecha.anio=anio;
@@ -119,7 +119,7 @@ int altaAlquiler(eAlquiler* alquiler,int ALQUILER, int idClieAlq,
 int printCliente(eCliente* clie,int CLIENTE){
     int i,retorno=-1;
     for(i=0;i<CLIENTE;i++){
-        if(emp[i].isEmpty==0){
+        if(clie[i].isEmpty==0){
             printf("___________________________________________________________________\n");
             printf("\tCliente:\nApellido: %s\nNombre: %s\nID Cliente: %d\n",
                    clie[i].apellido,clie[i].nombre,clie[i].idClie);
@@ -133,7 +133,7 @@ int printCliente(eCliente* clie,int CLIENTE){
 int printJuego(eJuego* juego,int JUEGOS){
     int i,retorno=-1;
     for(i=0;i<JUEGOS;i++){
-        if(emp[i].isEmpty==0){
+        if(juego[i].isEmpty==0){
             printf("___________________________________________________________________\n");
             printf("\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d",juego[i].descr,juego[i].importe,juego[i].idJue);
             printf("___________________________________________________________________\n");
@@ -157,12 +157,12 @@ int findClieById(eCliente* clie, int CLIENTE,int idClie){
     }
     return retorno;
 }
-int findJuegoById(eJueg* juego, int JUEGOS,int idJuego){
+int findJuegoById(eJuego* juego, int JUEGOS,int idJuego){
     int i;
     int retorno=-1;
     for(i=0;i<JUEGOS;i++){
         if(juego[i].isEmpty==0){ //si esta ocupado
-            if(juego[i].idJue==idJue){ //si lo encontro
+            if(juego[i].idJue==idJuego){ //si lo encontro
                 retorno=i;
                 break;
             }
@@ -172,60 +172,19 @@ int findJuegoById(eJueg* juego, int JUEGOS,int idJuego){
     return retorno;
 }
 
-int baja(employee* emp,int CANT,int id){
-    int iAux,retorno=-1;
-    char rta;
-        iAux=findEmployeeById(emp,CANT,id);
-        if(iAux!=-1){//lo encontro
-            do{
-            printf("Eliminar registro? S/N: ");
-            fflush(stdin);
-            rta=toupper(getch());
-            }while(rta!='S'&&rta!='N');
-            if(rta=='S'){
-                emp[iAux].isEmpty=1;
-                system("cls");
-                printf("Accion: Registro eliminado correctamente\n");
-                retorno=0;
-                }
-            if(rta=='N'){
-                system("cls");
-                printf("Accion: No se elimino el registro\n");
-                retorno=-1;
-            }
-        }
-        else{
-            system("cls");
-            printf("Accion: No se encuentra el ID\n");
-        }
-
-    return retorno;
-}
-
 int sortCliente(eCliente* clie,int CLIENTE,char* apellido, char* nombre){
     eCliente clieAux;
     int i, j;
-       /* for(i=0;i<CLIENTE-1;i++){
-                for(j=i;j<CLIENTE;j++){
-                if(emp[i].isEmpty==0&&emp[j].isEmpty==0){
-                    if(emp[i].sector>emp[j].sector){
-                        empAux=emp[i];
-                        emp[i]=emp[j];
-                        emp[j]=empAux;
-                    }
-                }
-            }
-        }*/
-        for(i=0;i<CANT-1;i++){
-            for(j=i;j<CANT;j++){
-                if(emp[i].isEmpty==0&&emp[j].isEmpty==0){
+        for(i=0;i<CLIENTE-1;i++){
+            for(j=i;j<CLIENTE;j++){
+                if(clie[i].isEmpty==0&&clie[j].isEmpty==0){
                     if(strcmp(clie[i].apellido,clie[j].apellido)>0){
                         clieAux=clie[i];
                         clie[i]=clie[j];
                         clie[j]=clieAux;
                     }
                     if(strcmp(clie[i].apellido,clie[j].apellido)==0){
-                        if(strcmp(per[i].nombre,per[j].nombre)>0){
+                        if(strcmp(clie[i].nombre,clie[j].nombre)>0){
                             clieAux=clie[i];
                             clie[i]=clie[j];
                             clie[j]=clieAux;
@@ -236,7 +195,7 @@ int sortCliente(eCliente* clie,int CLIENTE,char* apellido, char* nombre){
         }
     return 0;
 }
-int sortJuego(eJuego* clie,int JUEGOS,float importe, char* nombre){
+int sortJuego(eJuego* juego,int JUEGOS,float importe, char* nombre){
     eJuego jueAux;
     int i, j;
        /* for(i=0;i<CLIENTE-1;i++){
@@ -292,7 +251,7 @@ void modifyClie(eCliente *clie,int CANT,char* apellido,
             if(opcionModifClie==2)
             strcpy(clie[idClie].apellido,apellido);
             if(opcionModifClie==3)
-            strcpy(clie[idClie].dom,domicilio);
+            strcpy(clie[idClie].dom,dom);
             if(opcionModifClie==4)
             strcpy(clie[idClie].tel,tel);
 }
@@ -302,13 +261,13 @@ void modifyJuego(eJuego *juego,int JUEGOS,char* descr,
             if(opcionModifJuego==1)
             strcpy(juego[idJuego].descr,descr);
             if(opcionModifJuego==2)
-            strcpy(juego[idJuego].importe,importe);
+            juego[idJuego].importe=importe;
 }
 
 int removeCliente(eCliente* clie,int CLIENTE,int idRemClie){
     int iAux,retorno=-1;
     char rta;
-        iAux=findClieById(clie,CANT,idRemClie);
+        iAux=findClieById(clie,CLIENTE,idRemClie);
         if(iAux!=-1){//lo encontro
             do{
             printf("Eliminar registro? S/N: ");
@@ -361,49 +320,5 @@ int removeJuego(eJuego* juego,int JUEGOS,int idRemJue){
             printf("Accion: No se encuentra el codigo de cliente\n");
         }
 
-    return retorno;
-}
-
-int averageSalary(employee* emp,int CANT){
-    int i,retorno=-1;
-    float salaryAux=0,empContAux=0;
-    for(i=0;i<CANT;i++){
-        if(emp[i].isEmpty==0){
-            salaryAux+=emp[i].salary;
-            empContAux++;
-            retorno=0;
-        }
-        else{
-            break;
-        }
-    }
-    if(retorno!=-1){
-        retorno=salaryAux/empContAux;
-    }
-    return retorno;
-}
-
-float totalSalary(employee* emp,int CANT){
-    int i,retorno=-1;
-    float totalSalary=0;
-    for(i=0;i<CANT;i++){
-        if(emp[i].isEmpty==0){
-            totalSalary+=emp[i].salary;
-            retorno=totalSalary;
-        }
-    }
-    return retorno;
-}
-
-int excSalary(employee* emp,int CANT){
-    int i,retorno=-1,count=0;
-    for(i=0;i<CANT;i++){
-        if(emp[i].isEmpty==0){
-            if(emp[i].salary>=averageSalary(emp,CANT)){
-                count++;
-            }
-            retorno=count;
-        }
-    }
     return retorno;
 }

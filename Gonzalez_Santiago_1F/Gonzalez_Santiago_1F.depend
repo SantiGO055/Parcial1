@@ -29,3 +29,32 @@
 
 1538526556 d:\gonzalez santiago\gonzalez_santiago_1f\negocio.h
 
+1538528934 source:c:\users\drspeedyres\desktop\gonzalez_santiago_1f\input.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"input.h"
+
+1538528934 c:\users\drspeedyres\desktop\gonzalez_santiago_1f\input.h
+
+1538577518 source:c:\users\drspeedyres\desktop\gonzalez_santiago_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"input.h"
+	"negocio.h"
+
+1538573778 c:\users\drspeedyres\desktop\gonzalez_santiago_1f\negocio.h
+
+1538575021 source:c:\users\drspeedyres\desktop\gonzalez_santiago_1f\negocio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"negocio.h"
+	"input.h"
+
