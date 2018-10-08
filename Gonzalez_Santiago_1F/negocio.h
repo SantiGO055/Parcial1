@@ -79,7 +79,7 @@ int getFreeSpaceAlquiler(eAlquiler*, int);
  * \return int Retorna (-1) si hay error, (0) si no hay error.
  */
 int altaCliente(eCliente*,int,char*,char*,char*,char*,int);
-/** \brief Da de alta el cliente en una posicion libre del array
+/** \brief Da de alta el juego en una posicion libre del array
  * \param juego* puntero al array de juegos
  * \param CANT Entero del total del array
  * \param descr char auxiliar, descripción del juego
@@ -88,9 +88,20 @@ int altaCliente(eCliente*,int,char*,char*,char*,char*,int);
  * \return int Retorna (-1) si hay error, (0) si no hay error.
  */
 int altaJuego(eJuego*,int,char*,float,int);
+/** \brief Da de alta el alquiler asociando id de cliente e id de juego
+ * \param alquiler* puntero al array de alquiler
+ * \param ALQUILER Entero del total del array
+ * \param idClieAlq int auxiliar Entero del ID cliente
+ * \param idJuegoAlq int auxiliar Entero del ID juego
+ * \param dia int auxiliar, día de alta alquiler
+ * \param mes int auxiliar, mes de alta alquiler
+ * \param anio int auxiliar, año de alta alquiler
+ * \param idAlquiler int auxiliar, id del alquiler
+ * \return int Retorna (-1) si hay error, (0) si no hay error.
+ */
 int altaAlquiler(eAlquiler*,int,int,int,int,int,int,int);
-/** \brief Imprime el empleado por consola
- * \param emp* puntero al array de empleados
+/** \brief Imprime el cliente por consola
+ * \param clie* puntero al array de cliente
  * \param CANT Entero del total del array
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error.
  */
