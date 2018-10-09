@@ -51,21 +51,21 @@ int initAlquiler(eAlquiler*,int);
 /** \brief obtiene espacio libre del array cliente
  * \param puntero del array char
  * \param longitud del array
- * \return retorna (-1) si hay error, distinto de -1 si esta bien
+ * \return retorna (-1) si hay error, distinto de -1 si no hay error.
  */
 int getFreeSpaceCliente(eCliente*,int);
 
 /** \brief obtiene espacio libre del array juego
  * \param puntero del array char
  * \param longitud del array
- * \return retorna (-1) si hay error, distinto de -1 si esta bien
+ * \return retorna (-1) si hay error, distinto de -1 si no hay error.
  */
 int getFreeSpaceJuego(eJuego*,int);
 
 /** \brief obtiene espacio libre del array alquiler
  * \param puntero del array char
  * \param longitud del array
- * \return retorna (-1) si hay error, distinto de -1 si esta bien
+ * \return retorna (-1) si hay error, distinto de -1 si no hay error.
  */
 int getFreeSpaceAlquiler(eAlquiler*, int);
 /** \brief Da de alta el cliente en una posicion libre del array
@@ -107,7 +107,7 @@ int altaAlquiler(eAlquiler*,int,int,int,int,int,int,int);
  */
 int printCliente(eCliente*,int);
 int printJuego(eJuego*,int);
-/** \brief Busca el empleado por id
+/** \brief Busca el cliente por id
  * \param emp* puntero al array de empleados
  * \param CANT Entero del total del array
  * \param id int auxiliar, id a ser buscado en el array
@@ -116,7 +116,7 @@ int printJuego(eJuego*,int);
  */
 int findClieById(eCliente*,int,int);
 int findJuegoById(eJuego*,int,int);
-/** \brief Elimina el empleado buscandolo por id
+/** \brief Elimina el cliente buscandolo por id
  * \param emp* puntero al array de empleados
  * \param CANT Entero del total del array
  * \param id int auxiliar, id a ser eliminado en el array
@@ -125,11 +125,11 @@ int findJuegoById(eJuego*,int,int);
  */
 int removeCliente(eCliente*,int,int);
 int removeJuego(eJuego*,int,int);
-/** \brief Ordena el empleado ascendente o descendente segun se desee
- * \param emp* puntero al array de empleados
- * \param CANT Entero del total del array
- * \param name char auxiliar, nombre del empleado
- * \param lastName char auxiliar, apellido del empleado
+/** \brief Ordena el cliente por apellido y nombre
+ * \param clie* puntero al array de empleados
+ * \param JUEGOS Entero del total del array
+ * \param apellido char auxiliar, apellido del cliente
+ * \param nombre char auxiliar, nombre del cliente
  * \param opcion int, opcion deseada para ordenar el empleado
  * \return int Retorna (0) cuando se ordena
  */
@@ -141,17 +141,84 @@ int sortJuego(eJuego*,int,float, char*);
  * 0 si no se cargo el empleado.
  */
 int firstClienteJuego(int);
-/** \brief Modifica el empleado solicitado por id
- * \param emp* puntero al array de empleados
+/** \brief Modifica el cliente solicitado por id
+ * \param clie* puntero al array de cliente
  * \param CANT Entero del total del array
- * \param name char auxiliar, nombre del empleado a modificar
- * \param lastName char auxiliar, apellido del empleado a modificar
+ * \param apellido char auxiliar, apellido del cliente a modificar
+ * \param nombre char auxiliar, nombre del empleado a modificar
+ * \param domicilio char auxiliar, domicilio del cliente a modificar
+ * \param tel char auxiliar, telefono del cliente a modificar
+ * \param opcionModifClie int auxiliar, opcion ingresada para modificar
+ * \return No retorna nada ya que es una funcion void
+ */
+void modifyClie(eCliente*,int,char*,char*,char*,char*,int);
+/** \brief Modifica el juego solicitado por id
+ * \param juego* puntero al array de juego
+ * \param descr char auxiliar, descripcion del juego
+ * \param importe float auxiliar, nombre del empleado a modificar
+ * \param opcionModifJuego int auxiliar, opcion ingresada para modificar
  * \param salary float auxiliar, salario del empleado a modificar
  * \param id int auxiliar, id del empleado a modificar
  * \return No retorna nada ya que es una funcion void
  */
-void modifyClie(eCliente*,int,char*,char*,char*,char*,int);
 void modifyJuego(eJuego*,int,char*,float,int);
 
+/** \brief Calcula el total de importe de los juegos
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param ALQUILER int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+float totalImporte(eAlquiler*,eJuego*,int,int);
 
+/** \brief Calcula el promedio del importe de los juegos
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param ALQUILER int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+float averageImporte(eAlquiler*,eJuego*,int,int);
+/** \brief Calcula la cantidad de juegos que no superan el promedio de importe
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param ALQUILER int, Entero del total del array
+ * \param JUEGOS int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+int cantidadJuegosNoSuperan(eAlquiler*,eJuego*,int,int);
+
+/** \brief Imprime los clientes que alquilaron un juego determinado
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param clie* puntero al array de cliente
+ * \param JUEGOS int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \param CLIENTE int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+int printAlqJuegoClie(eAlquiler*,eJuego*,eCliente*,int,int,int);
+/** \brief Imprime los juegos que fueron alquilados por un cliente determinado
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param clie* puntero al array de cliente
+ * \param JUEGOS int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \param CLIENTE int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+int printAlqClieJuego(eAlquiler*,eJuego*,eCliente*,int,int,int);
+/** \brief Calcula los juegos menos alquilados
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param JUEGOS int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+int juegosMenosAlquilados(eAlquiler*,eJuego*,int,int);
+/** \brief Ordena importe de juegos de manera descendente
+ * \param juego* puntero al array de juego
+ * \param JUEGOS int, Entero del total del array
+ * \return int Retorna (-1) si hay error, la posicion del array si no hay error
+ */
+int sortImporte(eJuego*,int);
 #endif // NEGOCIO_H_INCLUDED

@@ -19,10 +19,22 @@ int main()
     char nombre[CHAR], apellido[CHAR],dom[CHAR],tel[21];
     char descr[CHAR];
 
+    /*eCliente clie[]=
+    {
+        {1, "gonzalez", "santi","maza","11234", 1},
+    };
+    eJuego juego[]=
+    {
+        {1, "battlefield 1",12,1},
+        {2, "mario bros",12,1},
+    };*/
+
+
+
     float importe;
 
     do{
-        utn_getEntero(&opcionMain,"\tMenu\n1- Alta\n2- Modificar\n3- Baja\n4- Listar\n\n5- Salir\n","Opcion incorrecta, reingrese numero",1,5,2);
+        utn_getEntero(&opcionMain,"\tMenu\n1- Alta\n2- Modificar\n3- Baja\n4- Listar\n\n5- Salir\n","Opcion incorrecta, reingrese numero",1,6,2);
         switch(opcionMain){
             case 1: //opcion principal
                 system("cls");
@@ -108,7 +120,7 @@ int main()
             case 2: //modificacion
                 system("cls");
                  //si no se cargo cliente o juego
-                utn_getEntero(&opcionModif,"¿Que desea modificar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
+                utn_getEntero(&opcionModif,"Que desea modificar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
                 switch(opcionModif){
                     case 1:
                         if(firstClienteJuego(flagClie)!=0){
@@ -206,27 +218,32 @@ int main()
                 break;
             case 4:
                 if(firstClienteJuego(flagClie)!=0||firstClienteJuego(flagJue)!=0){
-                utn_getEntero(&opcionList,"¿Que desea listar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
+                printf("El total de los importes de juegos alquilados es de: %.02f\n",totalImporte(alquiler,juego,ALQUILER,JUEGOS));
+                printf("El promedio de los importes de juegos alquilados es de: %.02f\n",averageImporte(alquiler,juego,ALQUILER,JUEGOS));
+                //printf("La cantidad de juegos cuyo importe no supera el promedio es de: %d\n",cantidadJuegosNoSuperan(alquiler,juego,ALQUILER,JUEGOS));
+                sortImporte(juego,JUEGOS);
+                printJuego(juego,JUEGOS);
+                utn_getEntero(&opcionList,"Que desea listar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
                 switch(opcionList){
-                 //si no es la primera vez
                     case 1:
                         system("cls");
                             sortCliente(clie,CLIENTE,apellido,nombre);
                             printCliente(clie,CLIENTE);
-
+                            printAlqJuegoClie(alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                     break;
                     case 2:
                         system("cls");
                             sortJuego(juego,JUEGOS,importe,descr);
                             printJuego(juego,JUEGOS);
-
+                            printAlqClieJuego(alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+                            juegosMenosAlquilados(alquiler,juego,JUEGOS,ALQUILER);
                     break;
                         }
 
                 }
             break;
         }
-    }while(opcionMain!=5);
+    }while(opcionMain!=6);
 
     return 0;
 }

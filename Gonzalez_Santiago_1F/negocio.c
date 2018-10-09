@@ -317,3 +317,128 @@ int removeJuego(eJuego* juego,int JUEGOS,int idRemJue){
 
     return retorno;
 }
+
+float totalImporte(eAlquiler* alquiler,eJuego* juego,int ALQUILER,int JUEGOS){
+    int i,retorno=-1,auxId;
+    float totalImporte=0;
+
+    for(i=0;i<ALQUILER;i++){
+        if(alquiler[i].isEmpty==0){
+            auxId=findJuegoById(juego,JUEGOS,alquiler[i].idJue);
+            totalImporte+=juego[auxId].importe;
+            retorno=totalImporte;
+        }
+    }
+    return retorno;
+}
+
+float averageImporte(eAlquiler* alquiler,eJuego* juego,int ALQUILER,int JUEGOS){
+    int i,retorno=-1,contAux=0;
+    float totalImporteAux;
+
+    for(i=0;i<ALQUILER;i++){
+        if(alquiler[i].isEmpty==0){
+            contAux++;
+            totalImporteAux=totalImporte(alquiler,juego,ALQUILER,JUEGOS);
+            retorno=totalImporteAux;
+        }
+    }
+    retorno=totalImporteAux/contAux;
+    return retorno;
+}
+
+int cantidadJuegosNoSuperan(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
+    int i,retorno=-1,contAux=0;
+    float averageAux;
+    for(i=0;i<JUEGOS;i++){
+        if(juego[i].isEmpty==0){
+            averageAux=averageImporte(alquiler,juego,ALQUILER,JUEGOS);
+            if(juego[i].importe<=averageAux){
+                contAux++;
+                retorno=contAux;
+            }
+        }
+    }
+
+    return retorno;
+}
+
+int printAlqJuegoClie(eAlquiler* alquiler,eJuego* juego,eCliente* clie,
+                         int JUEGOS,int ALQUILER,int CLIENTE){
+    int i,retorno=-1;
+    for(i=0;i<ALQUILER;i++){
+        if(alquiler[i].isEmpty==0){
+            printf("___________________________________________________________________\n");
+            printf("\nEl siguiente cliente alquilo el juego %s\n\tCliente:\nApellido: %s\nNombre: %s\nID Cliente: %d\n",
+                   juego[i].descr,clie[i].apellido,clie[i].nombre,clie[i].idClie);
+            printf("___________________________________________________________________\n");
+            retorno=i;
+        }
+
+    }
+    return retorno;
+}
+
+int printAlqClieJuego(eAlquiler* alquiler,eJuego* juego,eCliente* clie,
+                         int JUEGOS,int ALQUILER,int CLIENTE){
+    int i,retorno=-1;
+    for(i=0;i<ALQUILER;i++){
+        if(alquiler[i].isEmpty==0){
+            printf("___________________________________________________________________\n");
+            printf("\nEl siguiente juego se alquilo por el cliente %s\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
+                   clie[i].apellido,juego[i].descr,juego[i].importe,juego[i].idJue);
+            printf("___________________________________________________________________\n");
+            retorno=i;
+        }
+
+    }
+    return retorno;
+}
+
+int juegosMenosAlquilados(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
+    int i,retorno=-1,flag=0,max,min;
+    for(i=0;i<ALQUILER;i++){
+            if(alquiler[i].isEmpty==0){
+                if (flag==0||alquiler[i].idJue>max){
+                max=alquiler[i].idJue;
+                }
+            }
+            if(flag==0||alquiler[i].idJue<min){
+                min=alquiler[i].idJue;
+                flag=1;
+                }
+
+        }
+        for(i=0;i<ALQUILER;i++){
+            if(alquiler[i].isEmpty==0){
+                if(min==juego[i].idJue){
+                printf("___________________________________________________________________\n");
+                printf("\nEl juego menos alquilado es:\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
+                       juego[i].descr,juego[i].importe,juego[i].idJue);
+                printf("___________________________________________________________________\n");
+                retorno=i;
+                }
+            }
+        }
+
+
+    return retorno;
+}
+
+int sortImporte(eJuego* juego,int JUEGOS){
+    eJuego juegoAux;
+    int i, j;
+        for(i=0;i<JUEGOS-1;i++){
+            for(j=i;j<JUEGOS;j++){
+                if(juego[i].isEmpty==0&&juego[j].isEmpty==0){
+                    if(juego[i].importe<juego[j].importe){
+                        juegoAux=juego[i];
+                        juego[i]=juego[j];
+                        juego[j]=juegoAux;
+                    }
+                }
+            }
+
+        }
+    return 0;
+}
