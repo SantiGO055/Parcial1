@@ -405,15 +405,10 @@ int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCl
 int juegosMenosAlquilados(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
     int i,retorno=-1,flag=0,max,min;
     for(i=0;i<ALQUILER;i++){
-            if(alquiler[i].isEmpty==0){
-                if (flag==0||alquiler[i].idJue>max){
-                max=alquiler[i].idJue;
-                }
-            }
-            if(flag==0||alquiler[i].idJue<min){
+            if(flag==0||(alquiler[i].idJue<min&&alquiler[i].isEmpty==0)){
                 min=alquiler[i].idJue;
                 flag=1;
-                }
+            }
 
         }
         for(i=0;i<ALQUILER;i++){
@@ -447,4 +442,27 @@ int sortImporte(eJuego* juego,int JUEGOS){
 
         }
     return 0;
+}
+
+int listarJuegosPorFecha(int dia,int mes,int anio,eAlquiler* alquiler, eJuego* juego,eCliente *cliente,int JUEGOS,int ALQUILER){
+    int i,k,retorno=-1;
+     for (i=0; i<JUEGOS; i++ )
+    {
+        if(juego[i].isEmpty==0)
+        for(k=0; k<ALQUILER; k++)
+        {
+            if(alquiler[k].isEmpty==0 && alquiler[k].idJue == juego[i].idJue&&
+               alquiler[k].fecha.dia == dia&&alquiler[k].fecha.mes == mes&&
+               alquiler[k].fecha.anio== anio){
+             printf("___________________________________________________________________\n");
+                printf("\nJuegos alquilados en la fecha:%d/%d/%d\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
+                       dia,mes,anio,juego[i].descr,juego[i].importe,juego[i].idJue);
+                printf("___________________________________________________________________\n");
+                retorno=1;
+            }
+            else retorno=-1;
+
+        }
+    }
+    return retorno;
 }

@@ -221,4 +221,6 @@ int juegosMenosAlquilados(eAlquiler*,eJuego*,int,int);
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error
  */
 int sortImporte(eJuego*,int);
+
+int listarJuegosPorFecha(int,int,int,eAlquiler*,eJuego*,eCliente*,int,int);
 #endif // NEGOCIO_H_INCLUDED

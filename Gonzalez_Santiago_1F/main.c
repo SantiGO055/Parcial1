@@ -13,7 +13,7 @@ int main()
     int opcionMain,flagClie=0,flagJue=0,flagAlq=0,idClie=0,idJuego=0,findClienteAux,findJuegoAux;
     int opcionAlta,opcionModif,opcionModifClie,opcionModifJuego,idRemClie,opcionRem,idRemJue;
     int opcionList,idAlquiler,idClieAlq,idJuegoAlq,dia,mes,anio;
-    int idAux;
+    int idAux,diaalq,mesalq,anioalq,listarFechaAux;
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
     eAlquiler alquiler[CLIENTE*JUEGOS];
@@ -104,8 +104,8 @@ int main()
                     if(firstClienteJuego(flagClie)!=0&&firstClienteJuego(flagJue)!=0){
                         printCliente(clie,CLIENTE);
                         printJuego(juego,JUEGOS);
-                        utn_getEntero(&idClieAlq,"Ingrese el codigo de cliente que va a alquilar: ","Opcion incorrecta, reingrese numero\n",1,CLIENTE,2);
-                        utn_getEntero(&idJuegoAlq,"Ingrese el juego que desea alquilar: ","Opcion incorrecta, reingrese numero\n",1,JUEGOS,2);
+                        utn_getEntero(&idClieAlq,"Ingrese el codigo de cliente que va a alquilar: ","Opcion incorrecta, reingrese numero\n",1,idClie,2);
+                        utn_getEntero(&idJuegoAlq,"Ingrese el juego que desea alquilar: ","Opcion incorrecta, reingrese numero\n",1,idJuego,2);
                         utn_getEntero(&dia,"Ingrese el dia actual (solo numeros): ","Opcion incorrecta, ingrese dia valido\n",1,31,2);
                         utn_getEntero(&mes,"Ingrese el mes actual (solo numeros): ","Opcion incorrecta, ingrese mes valido\n",1,12,2);
                         utn_getEntero(&anio,"Ingrese el a%co actual (desde 2010 a la actualidad): ","Opcion incorrecta, ingrese anio valido\n",2010,2019,2);
@@ -261,6 +261,12 @@ int main()
                     case 6:
                         break;
                     case 7:
+                        utn_getEntero(&diaalq, "Ingrese el dia:\n", "ERROR: dia invalido", 1, 30, 3);
+                        utn_getEntero(&mesalq, "Ingrese el mes:\n", "ERROR: mes invalido", 1, 12, 3);
+                        utn_getEntero(&anioalq, "Ingrese el anio:\n", "ERROR: dia invalido", 2010, 2019, 3);
+                        listarFechaAux=listarJuegosPorFecha(diaalq,mesalq,anioalq,alquiler,juego,clie,JUEGOS,ALQUILER);
+                            if(listarFechaAux==-1)
+                            printf("No se encontro la fecha ingresada");
                         break;
                     case 8:
 
@@ -278,7 +284,7 @@ int main()
                 }
             break;
         }
-    }while(opcionMain!=6);
+    }while(opcionMain!=5);
 
     return 0;
 }
