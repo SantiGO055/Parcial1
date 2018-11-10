@@ -248,23 +248,30 @@ int main()
 
                     break;
                     case 3:
-                        utn_getEntero(&idAux,("Que desea eliminar?\n1- Clientes\n2- Juegos\n"),"Opcion incorrecta, reingrese numero",1,2,2);
+                        utn_getEntero(&idAux,("Ingrese el ID del juego para listar sus clientes\n"),"Opcion incorrecta, reingrese numero",1,JUEGOS,2);
                         printAlqJuegoDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                         break;
                     case 4:
+                        utn_getEntero(&idAux,("Ingrese el ID del cliente para listar sus juegos\n"),"Opcion incorrecta, reingrese numero",1,CLIENTE,2);
+                        printAlqClienteDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                         break;
                     case 5:
-                        //juegosMenosAlquilados(idAux,alquiler,juego,JUEGOS,ALQUILER);
+                        juegosMenosAlquilados(alquiler,juego,JUEGOS,ALQUILER);
                         break;
                     case 6:
                         break;
                     case 7:
                         break;
                     case 8:
+
                         break;
                     case 9:
+                        sortImporte(juego,JUEGOS);
+                        printJuego(juego,JUEGOS);
                         break;
                     case 10:
+                        sortCliente(clie,CLIENTE);
+                        printCliente(clie,CLIENTE);
                         break;
                         }
 

@@ -126,7 +126,7 @@
 
 1541822039 c:\users\santi\desktop\gonzalez_santiago_1f\input.h
 
-1541824240 source:c:\users\santi\desktop\gonzalez_santiago_1f\main.c
+1541881484 source:c:\users\santi\desktop\gonzalez_santiago_1f\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -134,9 +134,9 @@
 	"input.h"
 	"negocio.h"
 
-1541824525 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
+1541880138 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
 
-1541823235 source:c:\users\santi\desktop\gonzalez_santiago_1f\negocio.c
+1541883185 source:c:\users\santi\desktop\gonzalez_santiago_1f\negocio.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

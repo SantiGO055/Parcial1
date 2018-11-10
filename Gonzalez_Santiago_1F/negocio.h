@@ -133,7 +133,7 @@ int removeJuego(eJuego*,int,int);
  * \param opcion int, opcion deseada para ordenar el empleado
  * \return int Retorna (0) cuando se ordena
  */
-int sortCliente(eCliente*,int,char*,char*);
+int sortCliente(eCliente*,int);
 int sortJuego(eJuego*,int,float, char*);
 /** \brief Valida que se haya cargado un empleado al menos
  * \param flag int

@@ -172,27 +172,19 @@ int findJuegoById(eJuego* juego, int JUEGOS,int idJuego){
     return retorno;
 }
 
-int sortCliente(eCliente* clie,int CLIENTE,char* apellido, char* nombre){
+int sortCliente(eCliente* clie,int CLIENTE){
+    int j,p;
     eCliente clieAux;
-    int i, j;
-        for(i=0;i<CLIENTE-1;i++){
-            for(j=i;j<CLIENTE;j++){
-                if(clie[i].isEmpty==0&&clie[j].isEmpty==0){
-                    if(strcmp(clie[i].apellido,clie[j].apellido)>0){
-                        clieAux=clie[i];
-                        clie[i]=clie[j];
-                        clie[j]=clieAux;
+                for (p = 1; p < CLIENTE; p++){
+                        clieAux = clie[p];
+                        j = p - 1;
+                    while ((j >= 0) && (stricmp(clie[p].apellido,clie[j].apellido))<0){
+                        clie[j + 1] = clie[j];
+                        j--;
                     }
-                    if(strcmp(clie[i].apellido,clie[j].apellido)==0){
-                        if(strcmp(clie[i].nombre,clie[j].nombre)>0){
-                            clieAux=clie[i];
-                            clie[i]=clie[j];
-                            clie[j]=clieAux;
-                        }
-                    }
+                        clie[j + 1] = clieAux;
                 }
-            }
-        }
+
     return 0;
 }
 int sortJuego(eJuego* juego,int JUEGOS,float importe, char* nombre){
@@ -398,7 +390,7 @@ int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCl
                 if(alquiler[k].isEmpty==0&&alquiler[k].idJue==idJuego
                    &&clie[i].idClie == alquiler[k].idClie){
                     printf("___________________________________________________________________\n");
-                    printf("\tCliente:\nID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %d",
+                    printf("\tI:\nID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %s",
                            clie[i].idClie,clie[i].apellido,clie[i].nombre,clie[i].dom,clie[i].tel);
                     printf("___________________________________________________________________\n");
                     retorno=i;
@@ -426,7 +418,7 @@ int juegosMenosAlquilados(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUI
         }
         for(i=0;i<ALQUILER;i++){
             if(alquiler[i].isEmpty==0){
-                if(min==juego[i].idJue){
+                if(min==alquiler[i].idJue){
                 printf("___________________________________________________________________\n");
                 printf("\nEl juego menos alquilado es:\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
                        juego[i].descr,juego[i].importe,juego[i].idJue);
@@ -445,12 +437,11 @@ int sortImporte(eJuego* juego,int JUEGOS){
     int i, j;
         for(i=0;i<JUEGOS-1;i++){
             for(j=i;j<JUEGOS;j++){
-                if(juego[i].isEmpty==0&&juego[j].isEmpty==0){
-                    if(juego[i].importe<juego[j].importe){
+                if(juego[i].importe<juego[j].importe&&
+                   juego[i].isEmpty==0&&juego[j].isEmpty==0){
                         juegoAux=juego[i];
                         juego[i]=juego[j];
                         juego[j]=juegoAux;
-                    }
                 }
             }
 
