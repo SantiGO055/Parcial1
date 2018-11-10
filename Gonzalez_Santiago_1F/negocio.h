@@ -196,7 +196,7 @@ int cantidadJuegosNoSuperan(eAlquiler*,eJuego*,int,int);
  * \param CLIENTE int, Entero del total del array
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error
  */
-int printAlqJuegoClie(eAlquiler*,eJuego*,eCliente*,int,int,int);
+int printAlqJuegoDeterminado(int,eAlquiler*,eJuego*,eCliente*,int,int,int);
 /** \brief Imprime los juegos que fueron alquilados por un cliente determinado
  * \param alquiler* puntero al array de alquiler
  * \param juego* puntero al array de juego
@@ -206,7 +206,7 @@ int printAlqJuegoClie(eAlquiler*,eJuego*,eCliente*,int,int,int);
  * \param CLIENTE int, Entero del total del array
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error
  */
-int printAlqClieJuego(eAlquiler*,eJuego*,eCliente*,int,int,int);
+int printAlqClienteDeterminado(int,eAlquiler*,eJuego*,eCliente*,int,int,int);
 /** \brief Calcula los juegos menos alquilados
  * \param alquiler* puntero al array de alquiler
  * \param juego* puntero al array de juego

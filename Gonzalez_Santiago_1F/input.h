@@ -27,7 +27,7 @@ int utn_getStringAvanzado(char*,char*,char*,int, int);
  * \param *msgErr puntero al array char
  * \param int min rango de valor minimo del entero a obtener
  * \param int max rango de valor maximo del entero a obtener
- * \param id reintentos reintentos para ingresar bien el entero
+ * \param int reintentos reintentos para ingresar bien el entero
  * \return Retorna (-1) si hay error, (0) si no hay error.
  */
 int utn_getEntero(int*,char*,char*,int, int,int);

@@ -319,40 +319,45 @@ int removeJuego(eJuego* juego,int JUEGOS,int idRemJue){
 }
 
 float totalImporte(eAlquiler* alquiler,eJuego* juego,int ALQUILER,int JUEGOS){
-    int i,retorno=-1,auxId;
+    int i,retorno=-1,j;
     float totalImporte=0;
 
     for(i=0;i<ALQUILER;i++){
         if(alquiler[i].isEmpty==0){
-            auxId=findJuegoById(juego,JUEGOS,alquiler[i].idJue);
-            totalImporte+=juego[auxId].importe;
-            retorno=totalImporte;
+            for(j=0;j<JUEGOS;j++){
+                if(juego[i].isEmpty==0&&alquiler[i].idJue==juego[j].idJue){
+                    totalImporte+=juego[j].importe;
+                    retorno=totalImporte;
+                }
+            }
         }
     }
     return retorno;
 }
 
 float averageImporte(eAlquiler* alquiler,eJuego* juego,int ALQUILER,int JUEGOS){
-    int i,retorno=-1,contAux=0;
-    float totalImporteAux;
+    int i,retorno=-1,j,cantidad=0;
+    float totalImporte=0;
 
     for(i=0;i<ALQUILER;i++){
         if(alquiler[i].isEmpty==0){
-            contAux++;
-            totalImporteAux=totalImporte(alquiler,juego,ALQUILER,JUEGOS);
-            retorno=totalImporteAux;
+            for(j=0;j<JUEGOS;j++){
+                if(juego[i].isEmpty==0&&alquiler[i].idJue==juego[j].idJue){
+                    totalImporte+=juego[j].importe;
+                    cantidad++;
+                    retorno=totalImporte/cantidad;
+                }
+            }
         }
     }
-    retorno=totalImporteAux/contAux;
     return retorno;
 }
 
 int cantidadJuegosNoSuperan(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
     int i,retorno=-1,contAux=0;
-    float averageAux;
+    float averageAux=averageImporte(alquiler,juego,ALQUILER,JUEGOS);
     for(i=0;i<JUEGOS;i++){
         if(juego[i].isEmpty==0){
-            averageAux=averageImporte(alquiler,juego,ALQUILER,JUEGOS);
             if(juego[i].importe<=averageAux){
                 contAux++;
                 retorno=contAux;
@@ -363,32 +368,42 @@ int cantidadJuegosNoSuperan(eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQ
     return retorno;
 }
 
-int printAlqJuegoClie(eAlquiler* alquiler,eJuego* juego,eCliente* clie,
+int printAlqJuegoDeterminado(int idCliente,eAlquiler* alquiler,eJuego* juego,eCliente* clie,
                          int JUEGOS,int ALQUILER,int CLIENTE){
-    int i,retorno=-1;
-    for(i=0;i<ALQUILER;i++){
+    int i,retorno=-1,k;
+    for(i=0;i<CLIENTE;i++){
         if(alquiler[i].isEmpty==0){
-            printf("___________________________________________________________________\n");
-            printf("\nEl siguiente cliente alquilo el juego %s\n\tCliente:\nApellido: %s\nNombre: %s\nID Cliente: %d\n",
-                   juego[i].descr,clie[i].apellido,clie[i].nombre,clie[i].idClie);
-            printf("___________________________________________________________________\n");
-            retorno=i;
+            for(k=0;k<ALQUILER;k++){
+                if(alquiler[k].isEmpty==0&&alquiler[k].idClie==idCliente
+                   &&juego[i].idJue == alquiler[k].idJue){
+                    printf("___________________________________________________________________\n");
+                    printf("\tCliente:\nID Juego: %d\nDescripcion: %s\nImporte: %.02f\n",
+                           juego[i].idJue,juego[i].descr,juego[i].importe);
+                    printf("___________________________________________________________________\n");
+                    retorno=i;
+                }
+            }
         }
 
     }
     return retorno;
 }
 
-int printAlqClieJuego(eAlquiler* alquiler,eJuego* juego,eCliente* clie,
+int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCliente* clie,
                          int JUEGOS,int ALQUILER,int CLIENTE){
-    int i,retorno=-1;
-    for(i=0;i<ALQUILER;i++){
-        if(alquiler[i].isEmpty==0){
-            printf("___________________________________________________________________\n");
-            printf("\nEl siguiente juego se alquilo por el cliente %s\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
-                   clie[i].apellido,juego[i].descr,juego[i].importe,juego[i].idJue);
-            printf("___________________________________________________________________\n");
-            retorno=i;
+    int i,retorno=-1,k;
+    for(i=0;i<CLIENTE;i++){
+        if(clie[i].isEmpty==0){
+            for(k=0;k<ALQUILER;k++){
+                if(alquiler[k].isEmpty==0&&alquiler[k].idJue==idJuego
+                   &&clie[i].idClie == alquiler[k].idClie){
+                    printf("___________________________________________________________________\n");
+                    printf("\tCliente:\nID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %d",
+                           clie[i].idClie,clie[i].apellido,clie[i].nombre,clie[i].dom,clie[i].tel);
+                    printf("___________________________________________________________________\n");
+                    retorno=i;
+                }
+            }
         }
 
     }

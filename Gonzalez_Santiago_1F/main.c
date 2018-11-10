@@ -13,6 +13,7 @@ int main()
     int opcionMain,flagClie=0,flagJue=0,flagAlq=0,idClie=0,idJuego=0,findClienteAux,findJuegoAux;
     int opcionAlta,opcionModif,opcionModifClie,opcionModifJuego,idRemClie,opcionRem,idRemJue;
     int opcionList,idAlquiler,idClieAlq,idJuegoAlq,dia,mes,anio;
+    int idAux;
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
     eAlquiler alquiler[CLIENTE*JUEGOS];
@@ -28,7 +29,6 @@ int main()
         {1, "battlefield 1",12,1},
         {2, "mario bros",12,1},
     };*/
-
 
 
     float importe;
@@ -216,28 +216,56 @@ int main()
                         }
                 }
                 break;
-            case 4:
+            case 4: //listar
+                system("cls");
                 if(firstClienteJuego(flagClie)!=0||firstClienteJuego(flagJue)!=0){
-                printf("El total de los importes de juegos alquilados es de: %.02f\n",totalImporte(alquiler,juego,ALQUILER,JUEGOS));
-                printf("El promedio de los importes de juegos alquilados es de: %.02f\n",averageImporte(alquiler,juego,ALQUILER,JUEGOS));
+                //printf("El total de los importes de juegos alquilados es de: %.02f\n",totalImporte(alquiler,juego,ALQUILER,JUEGOS));
+                //printf("El promedio de los importes de juegos alquilados es de: %.02f\n",averageImporte(alquiler,juego,ALQUILER,JUEGOS));
                 //printf("La cantidad de juegos cuyo importe no supera el promedio es de: %d\n",cantidadJuegosNoSuperan(alquiler,juego,ALQUILER,JUEGOS));
-                sortImporte(juego,JUEGOS);
-                printJuego(juego,JUEGOS);
-                utn_getEntero(&opcionList,"Que desea listar?\n1- Clientes\n2- Juegos\n","Opcion incorrecta, reingrese numero",1,2,2);
+                //sortImporte(juego,JUEGOS);
+                //printJuego(juego,JUEGOS);
+                utn_getEntero(&opcionList,"1- Promedio y total de los importes de los juegos alquilados\n"
+                              "2- Cantidad de juegos que no superan el promedio de los juegos alquilados\n"
+                              "3- Listar todos los clientes que alquilaron un juego determinado\n"
+                              "4- Listar todos los juegos que fueron alquilados por un cliente determinado\n"
+                              "5- Listar los juegos menos alquilados\n"
+                              "6- Listar los clientes que realizaron mas alquileres\n"
+                              "7- Listar los juegos alquilados en una fecha determinada\n"
+                              "8- Listar los clientes que realizaron al menos un alquiler en una fecha determinada\n"
+                              "9- Listar juegos ordenados por importe(descendiente) por metodo burbujeo\n"
+                              "10- Listar clientes ordenados por apellido(ascendente) por metodo de insercion\n","Opcion incorrecta, reingrese numero",1,10,2);
                 switch(opcionList){
                     case 1:
                         system("cls");
-                            sortCliente(clie,CLIENTE,apellido,nombre);
-                            printCliente(clie,CLIENTE);
-                            printAlqJuegoClie(alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+                            printf("Total: %.02f\n",totalImporte(alquiler,juego,ALQUILER,JUEGOS));
+                            printf("Promedio: %.02f\n",averageImporte(alquiler,juego,ALQUILER,JUEGOS));
                     break;
                     case 2:
                         system("cls");
-                            sortJuego(juego,JUEGOS,importe,descr);
-                            printJuego(juego,JUEGOS);
-                            printAlqClieJuego(alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
-                            juegosMenosAlquilados(alquiler,juego,JUEGOS,ALQUILER);
+                        if(cantidadJuegosNoSuperan(alquiler,juego,JUEGOS,ALQUILER)!=-1){
+                            printf("Cantidad de juegos que no superan el promedio: %d\n",cantidadJuegosNoSuperan(alquiler,juego,JUEGOS,ALQUILER));
+                        }
+
                     break;
+                    case 3:
+                        utn_getEntero(&idAux,("Que desea eliminar?\n1- Clientes\n2- Juegos\n"),"Opcion incorrecta, reingrese numero",1,2,2);
+                        printAlqJuegoDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        //juegosMenosAlquilados(idAux,alquiler,juego,JUEGOS,ALQUILER);
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
                         }
 
                 }
