@@ -390,7 +390,7 @@ int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCl
                 if(alquiler[k].isEmpty==0&&alquiler[k].idJue==idJuego
                    &&clie[i].idClie == alquiler[k].idClie){
                     printf("___________________________________________________________________\n");
-                    printf("\tI:\nID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %s",
+                    printf("ID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %s",
                            clie[i].idClie,clie[i].apellido,clie[i].nombre,clie[i].dom,clie[i].tel);
                     printf("___________________________________________________________________\n");
                     retorno=i;
@@ -444,7 +444,7 @@ int sortImporte(eJuego* juego,int JUEGOS){
     return 0;
 }
 
-int listarJuegosPorFecha(int dia,int mes,int anio,eAlquiler* alquiler, eJuego* juego,eCliente *cliente,int JUEGOS,int ALQUILER){
+int listarJuegosPorFecha(int dia,int mes,int anio,eAlquiler* alquiler, eJuego* juego,int JUEGOS,int ALQUILER){
     int i,k,retorno=-1;
      for (i=0; i<JUEGOS; i++ )
     {
@@ -455,8 +455,30 @@ int listarJuegosPorFecha(int dia,int mes,int anio,eAlquiler* alquiler, eJuego* j
                alquiler[k].fecha.dia == dia&&alquiler[k].fecha.mes == mes&&
                alquiler[k].fecha.anio== anio){
              printf("___________________________________________________________________\n");
-                printf("\nJuegos alquilados en la fecha:%d/%d/%d\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
+                printf("\nJuegos alquilados en la fecha: %d/%d/%d\n\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
                        dia,mes,anio,juego[i].descr,juego[i].importe,juego[i].idJue);
+                printf("___________________________________________________________________\n");
+                retorno=1;
+            }
+            else retorno=-1;
+        }
+    }
+    return retorno;
+}
+
+int listarClientesPorFecha(int dia,int mes,int anio,eAlquiler* alquiler,eCliente* clie,int CLIENTE,int ALQUILER){
+    int i,k,retorno=-1;
+     for (i=0; i<CLIENTE; i++ )
+    {
+        if(clie[i].isEmpty==0)
+        for(k=0; k<ALQUILER; k++)
+        {
+            if(alquiler[k].isEmpty==0 && alquiler[k].idClie == clie[i].idClie&&
+               alquiler[k].fecha.dia == dia&&alquiler[k].fecha.mes == mes&&
+               alquiler[k].fecha.anio== anio){
+             printf("___________________________________________________________________\n");
+                printf("\nClientes que alquilaron en la fecha: %d/%d/%d\n\nID: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %s\n",
+                       dia,mes,anio,clie[i].idClie,clie[i].apellido,clie[i].nombre,clie[i].dom,clie[i].tel);
                 printf("___________________________________________________________________\n");
                 retorno=1;
             }

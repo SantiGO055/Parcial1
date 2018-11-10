@@ -221,6 +221,17 @@ int juegosMenosAlquilados(eAlquiler*,eJuego*,int,int);
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error
  */
 int sortImporte(eJuego*,int);
+/** \brief Lista los juegos por una fecha determinada
+ * \param juego* puntero al array de juego
+ * \param JUEGOS int, Entero del total del array
+ * \return int Retorna (-1) si hay error, 1 si no hay error
+ */
+int listarJuegosPorFecha(int,int,int,eAlquiler*,eJuego*,int,int);
+/** \brief Lista los clientes por una fecha determinada
+ * \param clie* puntero al array de clientes
+ * \param CLIENTE int, Entero del total del array
+ * \return int Retorna (-1) si hay error, 1 si no hay error
+ */
+int listarClientesPorFecha(int,int,int,eAlquiler*,eCliente*,int,int);
 
-int listarJuegosPorFecha(int,int,int,eAlquiler*,eJuego*,eCliente*,int,int);
 #endif // NEGOCIO_H_INCLUDED

@@ -13,7 +13,7 @@ int main()
     int opcionMain,flagClie=0,flagJue=0,flagAlq=0,idClie=0,idJuego=0,findClienteAux,findJuegoAux;
     int opcionAlta,opcionModif,opcionModifClie,opcionModifJuego,idRemClie,opcionRem,idRemJue;
     int opcionList,idAlquiler,idClieAlq,idJuegoAlq,dia,mes,anio;
-    int idAux,diaalq,mesalq,anioalq,listarFechaAux;
+    int idAux,diaalq,mesalq,anioalq,listarJuegoFechaAux,listarClienteFechaAux;
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
     eAlquiler alquiler[CLIENTE*JUEGOS];
@@ -245,37 +245,50 @@ int main()
                         if(cantidadJuegosNoSuperan(alquiler,juego,JUEGOS,ALQUILER)!=-1){
                             printf("Cantidad de juegos que no superan el promedio: %d\n",cantidadJuegosNoSuperan(alquiler,juego,JUEGOS,ALQUILER));
                         }
-
                     break;
                     case 3:
+                        system("cls");
                         utn_getEntero(&idAux,("Ingrese el ID del juego para listar sus clientes\n"),"Opcion incorrecta, reingrese numero",1,JUEGOS,2);
                         printAlqJuegoDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                         break;
                     case 4:
+                        system("cls");
                         utn_getEntero(&idAux,("Ingrese el ID del cliente para listar sus juegos\n"),"Opcion incorrecta, reingrese numero",1,CLIENTE,2);
                         printAlqClienteDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                         break;
                     case 5:
+                        system("cls");
                         juegosMenosAlquilados(alquiler,juego,JUEGOS,ALQUILER);
                         break;
                     case 6:
+                        system("cls");
+
                         break;
                     case 7:
+                        system("cls");
                         utn_getEntero(&diaalq, "Ingrese el dia:\n", "ERROR: dia invalido", 1, 30, 3);
                         utn_getEntero(&mesalq, "Ingrese el mes:\n", "ERROR: mes invalido", 1, 12, 3);
                         utn_getEntero(&anioalq, "Ingrese el anio:\n", "ERROR: dia invalido", 2010, 2019, 3);
-                        listarFechaAux=listarJuegosPorFecha(diaalq,mesalq,anioalq,alquiler,juego,clie,JUEGOS,ALQUILER);
-                            if(listarFechaAux==-1)
+                        listarJuegoFechaAux=listarJuegosPorFecha(diaalq,mesalq,anioalq,alquiler,juego,JUEGOS,ALQUILER);
+                            if(listarJuegoFechaAux==-1)
                             printf("No se encontro la fecha ingresada");
                         break;
                     case 8:
-
+                        system("cls");
+                        utn_getEntero(&diaalq, "Ingrese el dia:\n", "ERROR: dia invalido", 1, 30, 3);
+                        utn_getEntero(&mesalq, "Ingrese el mes:\n", "ERROR: mes invalido", 1, 12, 3);
+                        utn_getEntero(&anioalq, "Ingrese el anio:\n", "ERROR: dia invalido", 2010, 2019, 3);
+                        listarClienteFechaAux=listarClientesPorFecha(diaalq,mesalq,anioalq,alquiler,clie,CLIENTE,ALQUILER);
+                            if(listarClienteFechaAux==-1)
+                            printf("No se encontro la fecha ingresada");
                         break;
                     case 9:
+                        system("cls");
                         sortImporte(juego,JUEGOS);
                         printJuego(juego,JUEGOS);
                         break;
                     case 10:
+                        system("cls");
                         sortCliente(clie,CLIENTE);
                         printCliente(clie,CLIENTE);
                         break;
