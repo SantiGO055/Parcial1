@@ -401,14 +401,18 @@ int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCl
     }
     return retorno;
 }
-
-void cantidadVecesAlquiloJuego(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
-    int i,h;
+void initAlquilerJuegos(Alquileres* alquilerJuegos,int ALQUILER){
+    int h;
     for(h=0;h<ALQUILER;h++){
         alquilerJuegos[h].cantidadDeAlquileres=0;
         alquilerJuegos[h].idJue=0;
         alquilerJuegos[h].isEmpty=1;
     }
+}
+
+void cantidadVecesAlquiloJuego(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
+    int i,h;
+    initAlquilerJuegos(alquilerJuegos,ALQUILER);
     for(i=0;i<ALQUILER;i++){
         for(h=0;h<ALQUILER;h++){
             if(alquiler[i].isEmpty==0&&(juego[i].idJue==alquiler[h].idJue)){
@@ -419,6 +423,7 @@ void cantidadVecesAlquiloJuego(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJ
         }
     }
 }
+
 int juegosMenosAlquilados(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego* juego,int JUEGOS,int ALQUILER){
     int i,retorno=-1,k,min=ALQUILER;
     cantidadVecesAlquiloJuego(alquilerJuegos,alquiler,juego,JUEGOS,ALQUILER);
@@ -428,14 +433,14 @@ int juegosMenosAlquilados(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego*
                 //flag=1;
             }
         }
-        for(i=0;i<ALQUILER;i++){
-            for(k=0;k<ALQUILER;k++){
+        for(i=0;i<4;i++){ //cambiar el 4 por ALQUILER
+            for(k=0;k<4;k++){ //cambiar el 4 por ALQUILER
                 if(alquilerJuegos[i].isEmpty==0&&(alquilerJuegos[i].idJue==alquiler[k].idJue)&&
                     (alquilerJuegos[i].cantidadDeAlquileres<=min)&&alquiler[k].isEmpty==0){
 
                     printf("___________________________________________________________________\n");
                     printf("\nEl juego menos alquilado es:\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
-                           juego[k].descr,juego[k].importe,juego[k].idJue);
+                           juego[i].descr,juego[i].importe,juego[i].idJue);
                     printf("___________________________________________________________________\n");
                     retorno=i;
 
@@ -506,5 +511,56 @@ int listarClientesPorFecha(int dia,int mes,int anio,eAlquiler* alquiler,eCliente
 
         }
     }
+    return retorno;
+}
+void initAlquilerClientes(Alquileres* alquilerClientes,int ALQUILER){
+    int h;
+    for(h=0;h<ALQUILER;h++){
+        alquilerClientes[h].cantidadDeAlquileres=0;
+        alquilerClientes[h].idJue=0;
+        alquilerClientes[h].isEmpty=1;
+    }
+}
+
+void cantidadVecesAlquiloCliente(Alquileres* alquilerClientes,eAlquiler* alquiler,eCliente* clie,int CLIENTE,int ALQUILER){
+    int i,h;
+    initAlquilerClientes(alquilerClientes,ALQUILER);
+    for(i=0;i<4;i++){
+        for(h=0;h<4;h++){
+            if(alquiler[i].isEmpty==0&&clie[i].isEmpty==0&&(clie[i].idClie==alquiler[h].idClie)){
+                alquilerClientes[i].isEmpty=0;
+                alquilerClientes[i].idJue=alquiler[h].idJue;
+                alquilerClientes[i].cantidadDeAlquileres++;
+            }
+        }
+    }
+}
+
+int clientesQueMasAlquilaron(Alquileres* alquilerClientes,eAlquiler* alquiler,eCliente* clie,int CLIENTE,int ALQUILER){
+    int i,retorno=-1,k,max=0;
+    cantidadVecesAlquiloCliente(alquilerClientes,alquiler,clie,CLIENTE,ALQUILER);
+    for(k=0;k<ALQUILER;k++){
+            if((alquilerClientes[k].cantidadDeAlquileres>max&&alquiler[k].isEmpty==0)&&
+               (alquilerClientes[k].isEmpty==0)){
+                max=alquilerClientes[k].cantidadDeAlquileres;
+                //flag=1;
+            }
+        }
+        for(i=0;i<4;i++){ //cambiar el 4 por ALQUILER
+            for(k=0;k<4;k++){ //cambiar el 4 por ALQUILER
+                if(alquilerClientes[i].isEmpty==0&&(alquilerClientes[i].idJue==alquiler[k].idJue)&&
+                    (alquilerClientes[i].cantidadDeAlquileres>=max)&&alquiler[k].isEmpty==0){
+                    alquilerClientes[i].isEmpty=1;
+                    printf("___________________________________________________________________\n");
+                    printf("Los clientes que mas alquilaron fueron\nID Cliente: %d\nApellido: %s\nNombre: %s\nDomicilio: %s\nTel: %s\n",
+                           clie[i].idClie,clie[i].apellido,clie[i].nombre,clie[i].dom,clie[i].tel);
+                    printf("___________________________________________________________________\n");
+                    retorno=i;
+
+                }
+            }
+        }
+
+
     return retorno;
 }

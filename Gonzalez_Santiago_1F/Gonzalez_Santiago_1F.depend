@@ -116,7 +116,7 @@
 	"negocio.h"
 	"input.h"
 
-1539047488 source:c:\users\santi\desktop\gonzalez_santiago_1f\input.c
+1541990047 source:c:\users\santi\desktop\gonzalez_santiago_1f\input.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -124,9 +124,9 @@
 	<conio.h>
 	"input.h"
 
-1541822039 c:\users\santi\desktop\gonzalez_santiago_1f\input.h
+1541990047 c:\users\santi\desktop\gonzalez_santiago_1f\input.h
 
-1541888101 source:c:\users\santi\desktop\gonzalez_santiago_1f\main.c
+1542033553 source:c:\users\santi\desktop\gonzalez_santiago_1f\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -134,9 +134,9 @@
 	"input.h"
 	"negocio.h"
 
-1541888378 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
+1542034056 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
 
-1541888699 source:c:\users\santi\desktop\gonzalez_santiago_1f\negocio.c
+1542042875 source:c:\users\santi\desktop\gonzalez_santiago_1f\negocio.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -166,6 +166,35 @@
 1541989037 c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\negocio.h
 
 1541989896 source:c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\negocio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"negocio.h"
+	"input.h"
+
+1541990047 source:c:\users\drspeedyres\downloads\parcial1-master\gonzalez_santiago_1f\input.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"input.h"
+
+1541990047 c:\users\drspeedyres\downloads\parcial1-master\gonzalez_santiago_1f\input.h
+
+1542033553 source:c:\users\drspeedyres\downloads\parcial1-master\gonzalez_santiago_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"input.h"
+	"negocio.h"
+
+1542034056 c:\users\drspeedyres\downloads\parcial1-master\gonzalez_santiago_1f\negocio.h
+
+1542042260 source:c:\users\drspeedyres\downloads\parcial1-master\gonzalez_santiago_1f\negocio.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

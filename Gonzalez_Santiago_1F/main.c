@@ -16,8 +16,9 @@ int main()
     int idAux,diaalq,mesalq,anioalq,listarJuegoFechaAux,listarClienteFechaAux;
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
-    eAlquiler alquiler[CLIENTE*JUEGOS];
+    eAlquiler alquiler[ALQUILER];
     Alquileres alquilerJuegos[ALQUILER];
+    Alquileres alquilerClientes[ALQUILER];
     char nombre[CHAR], apellido[CHAR],dom[CHAR],tel[21];
     char descr[CHAR];
 
@@ -263,7 +264,7 @@ int main()
                         break;
                     case 6:
                         system("cls");
-
+                        clientesQueMasAlquilaron(alquilerClientes,alquiler,clie,CLIENTE,ALQUILER);
                         break;
                     case 7:
                         system("cls");

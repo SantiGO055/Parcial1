@@ -240,4 +240,10 @@ int listarJuegosPorFecha(int,int,int,eAlquiler*,eJuego*,int,int);
  */
 int listarClientesPorFecha(int,int,int,eAlquiler*,eCliente*,int,int);
 
+void initAlquilerJuegos(Alquileres*,int);
+void cantidadVecesAlquiloJuego(Alquileres*,eAlquiler*,eJuego*,int,int);
+
+void initAlquilerClientes(Alquileres*,int);
+void cantidadVecesAlquiloCliente(Alquileres*,eAlquiler*,eCliente*,int,int);
+int clientesQueMasAlquilaron(Alquileres*,eAlquiler*,eCliente*,int,int);
 #endif // NEGOCIO_H_INCLUDED
