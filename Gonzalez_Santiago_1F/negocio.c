@@ -423,7 +423,7 @@ int juegosMenosAlquilados(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego*
     int i,retorno=-1,k,min=ALQUILER;
     cantidadVecesAlquiloJuego(alquilerJuegos,alquiler,juego,JUEGOS,ALQUILER);
     for(k=0;k<ALQUILER;k++){
-            if((alquilerJuegos[k].cantidadDeAlquileres<min&&alquiler[k].isEmpty==0&&alquilerJuegos[k].isEmpty==0)){
+            if((alquilerJuegos[k].cantidadDeAlquileres<min&&alquiler[k].isEmpty==0)){
                 min=alquilerJuegos[k].cantidadDeAlquileres;
                 //flag=1;
             }
@@ -431,11 +431,11 @@ int juegosMenosAlquilados(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego*
         for(i=0;i<ALQUILER;i++){
             for(k=0;k<ALQUILER;k++){
                 if(alquilerJuegos[i].isEmpty==0&&(alquilerJuegos[i].idJue==alquiler[k].idJue)&&
-                    (alquilerJuegos[k].cantidadDeAlquileres<=min)&&alquiler[k].isEmpty==0){
+                    (alquilerJuegos[i].cantidadDeAlquileres<=min)&&alquiler[k].isEmpty==0){
 
                     printf("___________________________________________________________________\n");
                     printf("\nEl juego menos alquilado es:\n\tJuegos:\nDescripcion: %s\nImporte: %.02f\nID Juego: %d\n",
-                           juego[i].descr,juego[i].importe,juego[i].idJue);
+                           juego[k].descr,juego[k].importe,juego[k].idJue);
                     printf("___________________________________________________________________\n");
                     retorno=i;
 
