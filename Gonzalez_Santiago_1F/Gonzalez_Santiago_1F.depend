@@ -145,3 +145,32 @@
 	"negocio.h"
 	"input.h"
 
+1541892018 source:c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\input.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"input.h"
+
+1541892018 c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\input.h
+
+1541988946 source:c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"input.h"
+	"negocio.h"
+
+1541989037 c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\negocio.h
+
+1541892018 source:c:\users\santi\downloads\parcial1-master (1)\gonzalez_santiago_1f\negocio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"negocio.h"
+	"input.h"
+

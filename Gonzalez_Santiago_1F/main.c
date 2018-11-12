@@ -17,6 +17,7 @@ int main()
     eCliente clie[CLIENTE];
     eJuego juego[JUEGOS];
     eAlquiler alquiler[CLIENTE*JUEGOS];
+    Alquileres alquilerJuegos[ALQUILER];
     char nombre[CHAR], apellido[CHAR],dom[CHAR],tel[21];
     char descr[CHAR];
 
@@ -258,7 +259,7 @@ int main()
                         break;
                     case 5:
                         system("cls");
-                        juegosMenosAlquilados(alquiler,juego,JUEGOS,ALQUILER);
+                        juegosMenosAlquilados(alquilerJuegos,alquiler,juego,JUEGOS,ALQUILER);
                         break;
                     case 6:
                         system("cls");

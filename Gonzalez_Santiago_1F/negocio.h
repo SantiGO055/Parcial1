@@ -26,6 +26,12 @@ typedef struct{
     eFecha fecha;
     int isEmpty;
 }eAlquiler;
+typedef struct {
+    int idJue;
+    int idClie;
+    int cantidadDeAlquileres;
+    int isEmpty;
+}Alquileres;
 
 /** \brief inicializa el array cliente
  * \param puntero del array char
@@ -214,7 +220,7 @@ int printAlqClienteDeterminado(int,eAlquiler*,eJuego*,eCliente*,int,int,int);
  * \param ALQUILER int, Entero del total del array
  * \return int Retorna (-1) si hay error, la posicion del array si no hay error
  */
-int juegosMenosAlquilados(eAlquiler*,eJuego*,int,int);
+int juegosMenosAlquilados(Alquileres*,eAlquiler*,eJuego*,int,int);
 /** \brief Ordena importe de juegos de manera descendente
  * \param juego* puntero al array de juego
  * \param JUEGOS int, Entero del total del array
