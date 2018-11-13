@@ -134,7 +134,7 @@
 	"input.h"
 	"negocio.h"
 
-1542034056 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
+1542052169 c:\users\santi\desktop\gonzalez_santiago_1f\negocio.h
 
 1542042875 source:c:\users\santi\desktop\gonzalez_santiago_1f\negocio.c
 	<stdlib.h>
@@ -202,4 +202,33 @@
 	<conio.h>
 	"negocio.h"
 	"input.h"
+
+1541990048 source:c:\users\alumno\desktop\gonzalez_santiago_1f\input.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"input.h"
+
+1541990048 c:\users\alumno\desktop\gonzalez_santiago_1f\input.h
+
+1542062960 source:c:\users\alumno\desktop\gonzalez_santiago_1f\negocio.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"negocio.h"
+	"input.h"
+
+1542052170 c:\users\alumno\desktop\gonzalez_santiago_1f\negocio.h
+
+1542059456 source:c:\users\alumno\desktop\gonzalez_santiago_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"input.h"
+	"negocio.h"
 

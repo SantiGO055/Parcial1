@@ -239,11 +239,43 @@ int listarJuegosPorFecha(int,int,int,eAlquiler*,eJuego*,int,int);
  * \return int Retorna (-1) si hay error, 1 si no hay error
  */
 int listarClientesPorFecha(int,int,int,eAlquiler*,eCliente*,int,int);
-
+/** \brief Inicializa el array alquilerJuegos
+ * \param alquilerJuegos* puntero al array de alquilerJuegos
+ * \param ALQUILER int, Entero del total del array
+ * \return No retorna nada ya que es void
+ */
 void initAlquilerJuegos(Alquileres*,int);
+/** \brief Calcula la cantidad de veces que se alquilo un juego
+ * \param alquilerJuegos* puntero al array de alquilerJuegos
+ * \param alquiler* puntero al array de alquiler
+ * \param juego* puntero al array de juego
+ * \param JUEGOS int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \return No retorna nada ya que es void
+ */
 void cantidadVecesAlquiloJuego(Alquileres*,eAlquiler*,eJuego*,int,int);
-
+/** \brief Inicializa el array alquilerCliente
+ * \param alquilerClientes* puntero al array de alquilerClientes
+ * \param ALQUILER int, Entero del total del array
+ * \return No retorna nada ya que es void
+ */
 void initAlquilerClientes(Alquileres*,int);
+/** \brief Calcula la cantidad de veces que alquilo un cliente
+ * \param alquilerClientes* puntero al array de alquilerClientes
+ * \param alquiler* puntero al array de alquiler
+ * \param clie* puntero al array de cliente
+ * \param CLIENTE int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \return No retorna nada ya que es void
+ */
 void cantidadVecesAlquiloCliente(Alquileres*,eAlquiler*,eCliente*,int,int);
+/** \brief Calcula los clientes que mas alquilaron
+ * \param alquilerClientes* puntero al array de alquilerClientes
+ * \param alquiler* puntero al array de alquiler
+ * \param clie* puntero al array de clientes
+ * \param CLIENTE int, Entero del total del array
+ * \param ALQUILER int, Entero del total del array
+ * \return int Retorna (-1) si hay error, 1 si no hay error
+ */
 int clientesQueMasAlquilaron(Alquileres*,eAlquiler*,eCliente*,int,int);
 #endif // NEGOCIO_H_INCLUDED

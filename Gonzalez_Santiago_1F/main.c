@@ -251,12 +251,13 @@ int main()
                     case 3:
                         system("cls");
                         utn_getEntero(&idAux,("Ingrese el ID del juego para listar sus clientes\n"),"Opcion incorrecta, reingrese numero",1,JUEGOS,2);
-                        printAlqJuegoDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+                        printAlqClienteDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
                         break;
                     case 4:
                         system("cls");
                         utn_getEntero(&idAux,("Ingrese el ID del cliente para listar sus juegos\n"),"Opcion incorrecta, reingrese numero",1,CLIENTE,2);
-                        printAlqClienteDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+                        printAlqJuegoDeterminado(idAux,alquiler,juego,clie,JUEGOS,ALQUILER,CLIENTE);
+
                         break;
                     case 5:
                         system("cls");

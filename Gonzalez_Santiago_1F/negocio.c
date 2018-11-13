@@ -369,7 +369,7 @@ int printAlqJuegoDeterminado(int idCliente,eAlquiler* alquiler,eJuego* juego,eCl
                 if(alquiler[k].isEmpty==0&&alquiler[k].idClie==idCliente
                    &&juego[i].idJue == alquiler[k].idJue){
                     printf("___________________________________________________________________\n");
-                    printf("\tCliente:\nID Juego: %d\nDescripcion: %s\nImporte: %.02f\n",
+                    printf("\tJuego:\nID Juego: %d\nDescripcion: %s\nImporte: %.02f\n",
                            juego[i].idJue,juego[i].descr,juego[i].importe);
                     printf("___________________________________________________________________\n");
                     retorno=i;
@@ -397,7 +397,6 @@ int printAlqClienteDeterminado(int idJuego,eAlquiler* alquiler,eJuego* juego,eCl
                 }
             }
         }
-
     }
     return retorno;
 }
@@ -454,17 +453,21 @@ int juegosMenosAlquilados(Alquileres* alquilerJuegos,eAlquiler* alquiler,eJuego*
 
 int sortImporte(eJuego* juego,int JUEGOS){
     eJuego juegoAux;
-    int i, j;
+    int i, j,flag;
         for(i=0;i<JUEGOS-1;i++){
+            flag=0;
             for(j=i;j<JUEGOS;j++){
                 if(juego[i].importe<juego[j].importe&&
                    juego[i].isEmpty==0&&juego[j].isEmpty==0){
                         juegoAux=juego[i];
                         juego[i]=juego[j];
                         juego[j]=juegoAux;
+                        flag=1;
                 }
             }
-
+            if(flag==1){
+                break;
+            }
         }
     return 0;
 }

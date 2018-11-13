@@ -2,19 +2,29 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="negocio.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8823" topLine="210" />
+		</Cursor>
+	</File>
+	<File name="input.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1186" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14789" topLine="245" />
+		</Cursor>
+	</File>
 	<File name="input.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3304" topLine="84" />
 		</Cursor>
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="231" topLine="12" />
-		</Cursor>
-	</File>
 	<File name="negocio.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13033" topLine="316" />
+			<Cursor1 position="14432" topLine="365" />
 		</Cursor>
 		<Folding>
 			<Collapse line="8" />
@@ -26,17 +36,6 @@
 			<Collapse line="68" />
 			<Collapse line="85" />
 			<Collapse line="145" />
-			<Collapse line="159" />
 		</Folding>
-	</File>
-	<File name="input.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1186" topLine="19" />
-		</Cursor>
-	</File>
-	<File name="negocio.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8823" topLine="210" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
